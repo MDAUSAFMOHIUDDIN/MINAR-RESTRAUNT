@@ -1,0 +1,38 @@
+name: Restore Minar Images
+
+on:
+  push:
+    paths:
+      - ".image-fix-trigger"
+
+permissions:
+  contents: write
+
+jobs:
+  restore-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild image files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rebuild() {
+            dir="$1"
+            out="$2"
+            cat "$dir"/part*.txt | base64 --decode > "$out"
+          }
+          rebuild ".image-fix-parts/balochi_chicken_1788206620585.jpg" "src/assets/images/balochi_chicken_1788206620585.jpg"
+          rebuild ".image-fix-parts/chicken_mandi_1788206640555.jpg" "src/assets/images/chicken_mandi_1788206640555.jpg"
+          rebuild ".image-fix-parts/irani_chai_1788206661386.jpg" "src/assets/images/irani_chai_1788206661386.jpg"
+          rebuild ".image-fix-parts/kebabs_tandoor_1788206678122.jpg" "src/assets/images/kebabs_tandoor_1788206678122.jpg"
+
+      - name: Commit restored images
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/assets/images
+          git commit -m "Fix restaurant image assets" || exit 0
+          git push
