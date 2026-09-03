@@ -1,0 +1,7 @@
+{
+  "name": "MINAR RESTAURANT",
+  "description": "Mobile-first digital menu website for MINAR RESTAURANT — Taste That Stays With You. Fresh ingredients, authentic flavours, signature dishes, kebabs, biryani, and more.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
