@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #FDFCF0;
+    color: #2D2926;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-serif);
+  }
+
+  .font-brand {
+    font-family: var(--font-cinzel);
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Hide scrollbar for horizontal category tabs while maintaining swipeability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Delicate menu separator line */
+.menu-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(197, 160, 89, 0) 0%, rgba(197, 160, 89, 0.4) 50%, rgba(197, 160, 89, 0) 100%);
+}
+
